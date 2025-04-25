@@ -138,7 +138,7 @@ DEPLOY_HOST | Your VM IP or domain | Protected
 DEPLOY_USER | Your SSH username on VM | Protected
 SSH_PRIVATE_KEY | Your SSH private key (match public key on VM) | Protected
 
-Next Steps
+## Next Steps
 - Add your docker-compose.yml for the app
 - Optionally configure Nginx or Caddy for reverse proxy
 - Secure with SSL (e.g., Let's Encrypt)
