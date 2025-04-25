@@ -86,3 +86,61 @@ sudo firewall-cmd --permanent --add-port=80/tcp
 sudo firewall-cmd --permanent --add-port=443/tcp
 sudo firewall-cmd --reload
 ```
+## 8. Verify Tools Installed
+```bash
+docker --version
+docker compose version
+git --version
+
+```
+## 9. GitLab CI/CD Setup
+```bash
+stages:
+  - build
+  - deploy
+
+variables:
+  DOCKER_DRIVER: overlay2
+
+build:
+  stage: build
+  image: docker:latest
+  services:
+    - docker:dind
+  script:
+    - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
+    - docker build -t $CI_REGISTRY_IMAGE:latest .
+    - docker push $CI_REGISTRY_IMAGE:latest
+
+deploy:
+  stage: deploy
+  image: alpine:latest
+  before_script:
+    - apk add --no-cache openssh
+  script:
+    - echo "$SSH_PRIVATE_KEY" > /tmp/key && chmod 600 /tmp/key
+    - ssh -o StrictHostKeyChecking=no -i /tmp/key $DEPLOY_USER@$DEPLOY_HOST <<EOF
+        cd /home/$DEPLOY_USER/myapp
+        git pull origin main
+        docker-compose down
+        docker-compose pull
+        docker-compose up -d
+      EOF
+
+```
+GitLab CI/CD Variables to Add
+Go to: Settings > CI/CD > Variables and add:
+
+Key | Value | Type
+CI_REGISTRY_USER | Your GitLab username | Protected
+CI_REGISTRY_PASSWORD | GitLab personal access token | Protected
+DEPLOY_HOST | Your VM IP or domain | Protected
+DEPLOY_USER | Your SSH username on VM | Protected
+SSH_PRIVATE_KEY | Your SSH private key (match public key on VM) | Protected
+
+Next Steps
+- Add your docker-compose.yml for the app
+- Optionally configure Nginx or Caddy for reverse proxy
+- Secure with SSL (e.g., Let's Encrypt)
+- Add .env file and secrets to GitLab CI/CD securely
+- Add automated test stage (pytest, flake8, etc)
