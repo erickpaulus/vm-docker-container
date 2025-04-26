@@ -1,4 +1,4 @@
-# vm-docker-container
+This repository contains my personal experiment in preparing a production-ready environment for my PhD project. To be honest, I am a newbie in this area of infrastructure architecture. However, it is never too late for continious learning. 
 
 ## Production Setup Guide (Rocky Linux + Docker + GitLab CI/CD)
 
