@@ -35,7 +35,9 @@ You use it to:
 - Start, stop, and manage individual containers.
 - Pull images from Docker Hub.
 - Use the Docker CLI (like docker run, docker build, docker pull, etc.).
-  
+
+In the second command, we remove podman first. The reason is that  Docker and podman has similar function. They can be crashed if we install both of them.
+
 ```bash
 sudo dnf install -y dnf-utils device-mapper-persistent-data lvm2
 sudo dnf remove -y podman buildah
