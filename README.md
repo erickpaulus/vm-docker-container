@@ -37,8 +37,9 @@ You use it to:
   
 ```bash
 sudo dnf install -y dnf-utils device-mapper-persistent-data lvm2
+sudo dnf remove -y podman buildah
 sudo dnf config-manager --add-repo=https://download.docker.com/linux/centos/docker-ce.repo
-sudo dnf install -y docker-ce docker-ce-cli containerd.io
+sudo dnf install -y docker-ce docker-ce-cli containerd.io --nobest --allowerasing
 
 sudo systemctl start docker
 sudo systemctl enable docker
