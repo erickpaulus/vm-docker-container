@@ -28,6 +28,13 @@ sudo dnf install -y epel-release
 ```
 
 ## 2. Install Docker
+What it is: The core tool that lets you build, run, and manage containers.
+You use it to:
+- Create container images.
+- Start, stop, and manage individual containers.
+- Pull images from Docker Hub.
+- Use the Docker CLI (like docker run, docker build, docker pull, etc.).
+  
 ```bash
 sudo dnf install -y dnf-utils device-mapper-persistent-data lvm2
 sudo dnf config-manager --add-repo=https://download.docker.com/linux/centos/docker-ce.repo
@@ -44,6 +51,11 @@ sudo usermod -aG docker $USER
 ```
 
 ## 3. Install Docker Compose v2
+What it is: A tool for defining and running multi-container applications using a YAML file (docker-compose.yml).
+You use it to:
+- Describe multiple containers, their networks, volumes, and relationships in a single file.
+- Start, stop, and manage all containers at once.
+  
 ```bash
 sudo mkdir -p /usr/local/lib/docker/cli-plugins
 sudo curl -SL https://github.com/docker/compose/releases/latest/download/docker-compose-linux-x86_64 \
