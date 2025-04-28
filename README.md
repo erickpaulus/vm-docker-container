@@ -29,6 +29,7 @@ sudo dnf install -y epel-release
 
 ## 2. Install Docker
 What it is: The core tool that lets you build, run, and manage containers.
+
 You use it to:
 - Create container images.
 - Start, stop, and manage individual containers.
@@ -53,6 +54,7 @@ sudo usermod -aG docker $USER
 
 ## 3. Install Docker Compose v2
 What it is: A tool for defining and running multi-container applications using a YAML file (docker-compose.yml).
+
 You use it to:
 - Describe multiple containers, their networks, volumes, and relationships in a single file.
 - Start, stop, and manage all containers at once.
