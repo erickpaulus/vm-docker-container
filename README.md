@@ -20,7 +20,8 @@ This guide explains how to set up a production-ready environment for a Python we
 ---
 
 ## 1. Update the VM
-
+First command: updates your system.
+Second command: installs the EPEL(Extra Packages for Enterprise Linux) repository, so you have access to more software packages.
 ```bash
 sudo dnf update -y
 sudo dnf install -y epel-release
