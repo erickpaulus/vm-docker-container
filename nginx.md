@@ -90,7 +90,9 @@ Simpan, lalu restart:
 ```bash
 sudo systemctl restart nginx
 ```
+
 10. Test Konfigurasi
+
 Setiap habis edit config, test dulu:
 
 ```bash
