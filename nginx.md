@@ -1,4 +1,5 @@
-Step-by-Step Setup Nginx di Rocky Linux
+## Step-by-Step Setup Nginx di Rocky Linux
+
 1. Update Sistem
 ```bash
 sudo dnf update -y
